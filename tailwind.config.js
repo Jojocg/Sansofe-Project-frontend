@@ -14,7 +14,7 @@ module.exports = {
       {
         forest: {
           ...require("daisyui/src/theming/themes")["forest"],
-          "base-100": "#F5F5F5" //WhiteSmoke
+          "base-100": "WhiteSmoke"
         },
       },
     ],
