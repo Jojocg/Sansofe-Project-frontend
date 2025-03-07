@@ -224,7 +224,7 @@ function LocalPage() {
           <p className="text-lg mb-8 text-base-content/80">
             Comienza a disfrutar de todos los beneficios del consumo local visitando los mercados de la isla.
           </p>
-          <Link to="/markets" className="btn btn-primary btn-lg">
+          <Link to="/mercados" className="btn btn-primary btn-lg">
             Ver mercados
           </Link>
         </div>

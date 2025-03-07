@@ -147,7 +147,7 @@ function MarketsPage() {
                     </p>
                     <div className="card-actions justify-end">
                       <Link 
-                        to={`/markets/${market.id}`} 
+                        to={`/mercados/${market.id}`} 
                         className="btn btn-sm btn-primary"
                       >
                         Ver detalles

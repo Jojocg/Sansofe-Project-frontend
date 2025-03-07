@@ -59,8 +59,8 @@ function Navbar() {
           <div className="hidden flex-none lg:block">
             <ul className="menu menu-horizontal items-center gap-2">
               {/* Navbar menu content here */}
-              <li><Link to="/towns" className={`rounded-md ${isActive("/towns")}`}>Municipios</Link></li>
-              <li><Link to="/markets" className={`rounded-md ${isActive("/markets")}`}>Mercados</Link></li>
+              <li><Link to="/municipios" className={`rounded-md ${isActive("/municipios")}`}>Municipios</Link></li>
+              <li><Link to="/mercados" className={`rounded-md ${isActive("/mercados")}`}>Mercados</Link></li>
               <li><Link to="/local" className={`rounded-md ${isActive("/local")}`}>Consume Local</Link></li>
               
               {isLoggedIn && (
@@ -132,8 +132,8 @@ function Navbar() {
           )}
           
           <ul className="space-y-2 flex-grow">
-            <li><Link to="/towns" className={`${isActive("/towns")}`} onClick={closeSidebar}>Municipios</Link></li>
-            <li><Link to="/markets" className={`${isActive("/markets")}`} onClick={closeSidebar}>Mercados</Link></li>
+            <li><Link to="/municipios" className={`${isActive("/municipios")}`} onClick={closeSidebar}>Municipios</Link></li>
+            <li><Link to="/mercados" className={`${isActive("/mercados")}`} onClick={closeSidebar}>Mercados</Link></li>
             <li><Link to="/local" className={`${isActive("/local")}`} onClick={closeSidebar}>Consume Local</Link></li>
             
             {isLoggedIn && user && user.role === "admin" && (

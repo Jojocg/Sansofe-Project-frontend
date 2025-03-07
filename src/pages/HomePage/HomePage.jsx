@@ -15,7 +15,7 @@ function HomePage() {
                 Encuentra productos frescos, apoya a los agricultores canarios y fomenta la economía local. Sansofé te conecta con los mercados más cercanos.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/markets" className="btn btn-primary">
+                <Link to="/mercados" className="btn btn-primary">
                   Ver mercados
                 </Link>
                 <Link to="/local" className="btn btn-outline">
@@ -173,7 +173,7 @@ function HomePage() {
           </div>
 
           <div className="text-center mt-10">
-            <Link to="/markets" className="btn btn-outline">Ver todos los mercados</Link>
+            <Link to="/mercados" className="btn btn-outline">Ver todos los mercados</Link>
           </div>
         </div>
       </section>

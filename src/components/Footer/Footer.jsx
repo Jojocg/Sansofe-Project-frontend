@@ -17,8 +17,8 @@ function Footer() {
           </div>
           <div>
             <span className="footer-title">Descubre</span>
-            <Link to="/markets" className="link link-hover">Mercados</Link>
-            <Link to="/towns" className="link link-hover">Municipios</Link>
+            <Link to="/mercados" className="link link-hover">Mercados</Link>
+            <Link to="/municipios" className="link link-hover">Municipios</Link>
             <Link to="/local" className="link link-hover">Consume Local</Link>
             <Link to="/products" className="link link-hover">Productos de temporada</Link>
           </div>
