@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import TownsListPage from "./pages/TownsListPage/TownsListPage"
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -28,6 +29,12 @@ function App() {
           }
         />
 
+        <Route
+          path="/municipios"
+          element={
+            <TownsListPage />
+          }
+        />
         <Route
           path="/registro"
           element={
