@@ -79,7 +79,7 @@ function Navbar() {
                     </div>
                     <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
                       <li className="font-semibold px-4 py-2 border-b border-base-200">{user && user.name}</li>
-                      <li><Link to="/profile">Perfil</Link></li>
+                      <li><Link to="/perfil">Perfil</Link></li>
                       <li><button onClick={logOutUser}>Cerrar Sesión</button></li>
                     </ul>
                   </div>
@@ -148,7 +148,7 @@ function Navbar() {
           <div className="mt-auto border-t border-base-300 pt-4">
             {isLoggedIn ? (
               <>
-                <Link to="/profile" className="btn btn-outline w-full mb-2" onClick={closeSidebar}>Mi Perfil</Link>
+                <Link to="/perfil" className="btn btn-outline w-full mb-2" onClick={closeSidebar}>Mi Perfil</Link>
                 <button onClick={() => {logOutUser(); closeSidebar();}} className="btn btn-ghost w-full">Cerrar Sesión</button>
               </>
             ) : (

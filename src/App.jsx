@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
 
         <Route
-          path="/profile"
+          path="/perfil"
           element={
             <IsPrivate>
               <ProfilePage />
