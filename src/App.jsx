@@ -11,6 +11,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
+import TownForm from "./components/TownForm/TownForm";
 
 function App() {
   return (
@@ -35,6 +36,19 @@ function App() {
             <TownsListPage />
           }
         />
+        <Route
+          path="/municipios/crear"
+          element={
+            <TownForm />
+          }
+        />
+        <Route
+          path="/municipios/editar/:id"
+          element={
+            <TownForm />
+          }
+        />
+
         <Route
           path="/registro"
           element={
