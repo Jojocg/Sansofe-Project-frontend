@@ -29,7 +29,7 @@ function App() {
         />
 
         <Route
-          path="/signup"
+          path="/registro"
           element={
             <IsAnon>
               <SignupPage />
@@ -37,7 +37,7 @@ function App() {
           }
         />
         <Route
-          path="/login"
+          path="/acceso"
           element={
             <IsAnon>
               <LoginPage />

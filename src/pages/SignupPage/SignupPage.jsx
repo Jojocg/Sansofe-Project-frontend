@@ -37,7 +37,7 @@ function SignupPage() {
     authService
       .signup(requestBody)
       .then((response) => {  //VER SI FUNCIONA ERROR.RESPONSE DE ABAJO
-        navigate("/login")
+        navigate("/acceso")
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
@@ -133,7 +133,7 @@ function SignupPage() {
 
         <div className="text-center">
           <p className="text-sm">¿Ya tienes una cuenta?</p>
-          <Link to="/login" className="btn btn-outline btn-sm btn-block mt-2">
+          <Link to="/acceso" className="btn btn-outline btn-sm btn-block mt-2">
             Acceder
           </Link>
         </div>

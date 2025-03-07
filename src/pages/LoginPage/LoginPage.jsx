@@ -109,7 +109,7 @@ function LoginPage() {
 
         <div className="text-center">
           <p className="text-sm">¿No tienes una cuenta?</p>
-          <Link to="/signup" className="btn btn-outline btn-sm btn-block mt-2">
+          <Link to="/registro" className="btn btn-outline btn-sm btn-block mt-2">
             Regístrate
           </Link>
         </div>

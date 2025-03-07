@@ -88,8 +88,8 @@ function Navbar() {
               
               {!isLoggedIn && (
                 <>
-                  <li><Link to="/login" className="btn btn-ghost btn-sm">Acceder</Link></li>
-                  <li><Link to="/signup" className="btn btn-primary btn-sm">Registrarse</Link></li>
+                  <li><Link to="/acceso" className="btn btn-ghost btn-sm">Acceder</Link></li>
+                  <li><Link to="/registro" className="btn btn-primary btn-sm">Registrarse</Link></li>
                 </>
               )}
             </ul>
@@ -153,8 +153,8 @@ function Navbar() {
               </>
             ) : (
               <>
-                <Link to="/login" onClick={closeSidebar} className="btn btn-outline w-full mb-2">Acceder</Link>
-                <Link to="/signup" onClick={closeSidebar} className="btn btn-primary w-full">Registrarse</Link>
+                <Link to="/acceso" onClick={closeSidebar} className="btn btn-outline w-full mb-2">Acceder</Link>
+                <Link to="/registro" onClick={closeSidebar} className="btn btn-primary w-full">Registrarse</Link>
               </>
             )}
           </div>
