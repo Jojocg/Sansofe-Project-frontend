@@ -50,7 +50,7 @@ function HomePage() {
             {/* Feature 1 */}
             <div className="card bg-base-200 shadow-md">
               <div className="card-body">
-                <div className="mb-4 text-primary">
+                <div className="mb-4 text-secondary">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
@@ -66,7 +66,7 @@ function HomePage() {
             {/* Feature 2 */}
             <div className="card bg-base-200 shadow-md">
               <div className="card-body">
-                <div className="mb-4 text-primary">
+                <div className="mb-4 text-secondary">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
                     <circle cx="12" cy="10" r="3"/>
@@ -82,7 +82,7 @@ function HomePage() {
             {/* Feature 3 */}
             <div className="card bg-base-200 shadow-md">
               <div className="card-body">
-                <div className="mb-4 text-primary">
+                <div className="mb-4 text-secondary">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                   </svg>
@@ -179,14 +179,14 @@ function HomePage() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-primary text-primary-content">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-secondary text-secondary-content">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">¿Por qué consumir local?</h2>
           <p className="text-lg mb-8 opacity-90">
             Al comprar productos locales reduces tu huella de carbono, apoyas la economía de la isla
             y consumes alimentos más frescos y de temporada.
           </p>
-          <Link to="/local" className="btn btn-outline btn-lg text-primary-content border-primary-content hover:bg-primary-content hover:text-primary">
+          <Link to="/local" className="btn btn-outline btn-lg text-secondary-content border-secondary-content hover:bg-secondary-content hover:text-secondary">
             Descubre más
           </Link>
         </div>

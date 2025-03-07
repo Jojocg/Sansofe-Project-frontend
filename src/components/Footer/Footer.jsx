@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="bg-base-200 text-base-content">
-      <div className="max-w-7xl mx-auto">
+      <div className="w-full mx-auto">
         <div className="footer p-10">
           <div>
             <span className="footer-title">Sansofé</span>
