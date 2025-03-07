@@ -34,7 +34,7 @@ function Navbar() {
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" ref={drawerCheckbox} /* Se asigna el ref al checkbox *//>
       <div className="drawer-content flex flex-col">
         {/* Navbar */}
-        <div className="navbar bg-base-100 shadow-md">
+        <div className="navbar bg-base-100 shadow-md px-4">
           <div className="flex-none lg:hidden">
             <label htmlFor="my-drawer-3" aria-label="open sidebar" className="btn btn-square btn-ghost">
               <svg
@@ -52,8 +52,8 @@ function Navbar() {
           </div>
           <div className="flex-1">
             <Link to="/" className="flex items-center gap-2">
-              <div className="font-bold text-xl text-primary">Sansofé</div>
-              <div className="text-xs text-base-content/70 hidden sm:block mt-1">Mercados de Gran Canaria</div>
+              <div className="font-bold text-2xl text-primary">Sansofé</div>
+              <div className="text-sm text-base-content/70 hidden sm:block mt-1">Mercados de Gran Canaria</div>
             </Link>
           </div>
           <div className="hidden flex-none lg:block">
