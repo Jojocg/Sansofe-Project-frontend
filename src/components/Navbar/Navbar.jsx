@@ -69,7 +69,7 @@ function Navbar() {
                     <li><Link to="/admin" className={`rounded-md ${isActive("/admin")}`}>Admin</Link></li>
                   )}
                   {user && (
-                    <li><Link to="/favorites" className={`rounded-md ${isActive("/favorites")}`}>Favoritos</Link></li>
+                    <li><Link to="/favoritos" className={`rounded-md ${isActive("/favoritos")}`}>Favoritos</Link></li>
                   )}
                   <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
@@ -141,7 +141,7 @@ function Navbar() {
             )}
             
             {isLoggedIn && (
-              <li><Link to="/favorites" className={`${isActive("/favorites")}`} onClick={closeSidebar}>Mis Favoritos</Link></li>
+              <li><Link to="/favoritos" className={`${isActive("/favoritos")}`} onClick={closeSidebar}>Mis Favoritos</Link></li>
             )}
           </ul>
           
