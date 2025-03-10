@@ -12,7 +12,6 @@ function TownForm() {
 
     const [formData, setFormData] = useState({
         name: "",
-        image: "",
     });
 
     const [isLoading, setIsLoading] = useState(false);
