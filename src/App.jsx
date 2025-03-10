@@ -6,6 +6,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TownsListPage from "./pages/TownsListPage/TownsListPage"
+import MarketsListPage from "./pages/MarketsPage/MarketsListPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -49,6 +50,17 @@ function App() {
           }
         />
 
+        <Route
+          path="/mercados"
+          element={
+            <MarketsListPage />
+          }
+        />
+        <Route 
+          path="/municipios/:id/mercados" 
+          element={<MarketsListPage />} 
+        />
+        
         <Route
           path="/registro"
           element={

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //Lucide Icons
 import { Plus, Edit, Trash2, AlertCircle, MapPin, Store } from "lucide-react";
@@ -37,7 +37,7 @@ function TownsListPage() {
   const handleDelete = async (id) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este municipio?")) {
       try {
-        await townsService.deleteProject(id);
+        await townsService.deleteOne(id);
         // Actualizar la lista de municipios
         setTowns(towns.filter((town) => town._id !== id));
       } catch (err) {
