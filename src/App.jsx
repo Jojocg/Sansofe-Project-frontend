@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import TownsListPage from "./pages/TownsListPage/TownsListPage"
 import MarketsListPage from "./pages/MarketsPage/MarketsListPage";
 import MarketDetailsPage from "./pages/MarketDetailsPage/MarketDetailsPage";
+import BuyLocalPage from "./pages/BuyLocalPage/BuyLocalPage"
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -87,6 +88,11 @@ function App() {
           }
         />
         
+        <Route 
+          path="/local" 
+          element={<BuyLocalPage />} 
+        />
+
         <Route
           path="/registro"
           element={

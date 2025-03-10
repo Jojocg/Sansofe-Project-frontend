@@ -4,7 +4,7 @@ function LocalPage() {
   return (
     <div className="min-h-screen bg-base-100">
       {/* Hero Section */}
-      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-primary text-primary-content">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-secondary text-secondary-content">
         <div className="max-w-5xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-6">¿Por qué consumir local?</h1>
           <p className="text-xl max-w-3xl mx-auto opacity-90">
@@ -26,7 +26,7 @@ function LocalPage() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div>
-              <h3 className="text-2xl font-bold text-primary mb-4">Para el medio ambiente</h3>
+              <h3 className="text-2xl font-bold text-secondary mb-4">Para el medio ambiente</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,7 +72,7 @@ function LocalPage() {
               />
             </div>
             <div className="order-1 md:order-2">
-              <h3 className="text-2xl font-bold text-primary mb-4">Para tu salud</h3>
+              <h3 className="text-2xl font-bold text-secondary mb-4">Para tu salud</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -104,7 +104,7 @@ function LocalPage() {
 
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-primary mb-4">Para la economía local</h3>
+              <h3 className="text-2xl font-bold text-secondary mb-4">Para la economía local</h3>
               <ul className="space-y-4">
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-primary mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
