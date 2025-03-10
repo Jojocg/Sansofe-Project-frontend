@@ -42,13 +42,17 @@ function App() {
         <Route
           path="/municipios/crear"
           element={
-            <TownForm />
+            <IsPrivate>
+              <TownForm />
+            </IsPrivate>
           }
         />
         <Route
           path="/municipios/editar/:id"
           element={
-            <TownForm />
+            <IsPrivate>
+              <TownForm />
+            </IsPrivate>
           }
         />
 
@@ -69,13 +73,17 @@ function App() {
         <Route
           path="/mercados/crear"
           element={
-            <MarketForm />
+            <IsPrivate>
+              <MarketForm />
+            </IsPrivate>
           }
         />
         <Route
           path="/mercados/editar/:id"
           element={
-            <MarketForm />
+            <IsPrivate>
+              <MarketForm />
+            </IsPrivate>
           }
         />
         
