@@ -2,6 +2,37 @@
 import { Edit, Trash2 } from "lucide-react";
 
 function MarketCard({ market, showTown = false, isAdmin, navigate, handleDelete }) {
+    const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+
+    // Función para formatear los días del horario
+    const formatScheduleDays = (days) => {
+        if (!days || days.length === 0) return "No disponible";
+
+        // Si son todos los días de la semana
+        if (days.length === 7) return "Todos los días";
+
+        // Si son días consecutivos
+        /* const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]; */
+        const sortedDays = [...days].sort((a, b) => daysOfWeek.indexOf(a) - daysOfWeek.indexOf(b));
+
+        // Comprobar si son días consecutivos
+        let isConsecutive = true;
+        for (let i = 0; i < sortedDays.length - 1; i++) {
+            const currentIndex = daysOfWeek.indexOf(sortedDays[i]);
+            const nextIndex = daysOfWeek.indexOf(sortedDays[i + 1]);
+            if (nextIndex - currentIndex !== 1) {
+                isConsecutive = false;
+                break;
+            }
+        }
+
+        if (isConsecutive && sortedDays.length > 2) {
+            return `${sortedDays[0]} a ${sortedDays[sortedDays.length - 1]}`;
+        }
+
+        // Si no son consecutivos, listarlos separados por comas
+        return sortedDays.join(", ");
+    };
     return (
         <div className="card bg-base-100 shadow-xl">
             <figure>
@@ -20,9 +51,7 @@ function MarketCard({ market, showTown = false, isAdmin, navigate, handleDelete 
                     {/* Badges para los días */}
                     {market.schedule?.map((scheduleItem, index) => (
                         <div key={index} className="badge badge-outline">
-                            {scheduleItem.days.length > 2
-                                ? `${scheduleItem.days[0]}-${scheduleItem.days[scheduleItem.days.length - 1]}`
-                                : scheduleItem.days.join(', ')}
+                            <p className="text-sm font-medium">{formatScheduleDays(scheduleItem.days)}</p>
                         </div>
                     ))}
                 </div>
