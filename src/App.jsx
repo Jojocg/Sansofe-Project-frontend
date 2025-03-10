@@ -13,6 +13,7 @@ import Footer from "./components/Footer/Footer";
 import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import TownForm from "./components/TownForm/TownForm";
+import MarketForm from "./components/MarketForm/MarketForm";
 
 function App() {
   return (
@@ -59,6 +60,18 @@ function App() {
         <Route 
           path="/municipios/:id/mercados" 
           element={<MarketsListPage />} 
+        />
+        <Route
+          path="/mercados/crear"
+          element={
+            <MarketForm />
+          }
+        />
+        <Route
+          path="/mercados/editar/:id"
+          element={
+            <MarketForm />
+          }
         />
         
         <Route

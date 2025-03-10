@@ -81,7 +81,7 @@ function TownForm() {
 
             navigate("/municipios");
         } catch (err) {
-            console.error("Error saving town:", err);
+            /* console.error("Error saving town:", err); */
             setError(
                 err.response?.data?.message ||
                 "Hubo un error al guardar el municipio. Por favor, inténtalo de nuevo."
