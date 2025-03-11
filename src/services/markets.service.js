@@ -26,7 +26,8 @@ class MarketsService {
 
   // POST /api/markets/:id/favorite
   toggleFav = async (requestBody) => {
-    return this.api.post('/api/markets/:id/favorite', requestBody);
+    const { marketId } = requestBody;
+    return this.api.post(`/api/markets/${marketId}/favorite`, requestBody);
   }
 
   // GET /api/markets

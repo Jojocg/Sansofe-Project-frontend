@@ -1,7 +1,52 @@
 //Lucide Icons
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash2, Heart } from "lucide-react";
+import { useState, useEffect, useContext } from "react";
 
-function MarketCard({ market, showTown = false, isAdmin, navigate, handleDelete }) {
+import { AuthContext } from "../../context/auth.context";
+import marketsService from "../../services/markets.service";
+
+function MarketCard({
+    market,
+    showTown = false,
+    isAdmin,
+    navigate,
+    handleDelete,
+    refreshFavorites,
+    userFavorites = [] // Array con IDs de mercados favoritos 
+}) {
+    const { isLoggedIn, user } = useContext(AuthContext);
+
+    // Determinamos si este mercado está en favoritos usando el array recibido
+    const [isFavorite, setIsFavorite] = useState(userFavorites.includes(market._id));
+
+    // Actualizamos el estado cuando cambian los favoritos del usuario
+    useEffect(() => {
+        setIsFavorite(userFavorites.includes(market._id));
+    }, [userFavorites, market._id]);
+
+    // Función para cambiar el estado de favorito
+    const handleToggleFavorite = async (e) => {
+        e.stopPropagation(); // Prevenir el evento de clic en la tarjeta
+        if (!isLoggedIn) return; // No hacer nada si el usuario no está logueado
+
+        try {
+            const response = await marketsService.toggleFav({
+                marketId: market._id,
+                userId: user._id
+            });
+
+            // Actualizamos el estado local
+            setIsFavorite(response.data.isFavorite);
+
+            // Llamamos a la función de actualización para refrescar la lista de favoritos en el padre
+            if (refreshFavorites) {
+                refreshFavorites();
+            }
+        } catch (error) {
+            console.error("Error al cambiar estado de favorito:", error);
+        }
+    };
+
     const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
 
     // Función para formatear los días del horario
@@ -35,8 +80,20 @@ function MarketCard({ market, showTown = false, isAdmin, navigate, handleDelete 
     };
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure>
+            <figure className="relative">
                 <img src={market.image} alt={market.name} className="h-48 w-full object-cover" />
+                {/* Botón de Favorito - solo mostrar para usuarios logueados */}
+                {isLoggedIn && (
+                    <button
+                        onClick={handleToggleFavorite}
+                        className="absolute top-2 left-2 p-2 rounded-full bg-base-100 bg-opacity-70 hover:bg-opacity-100 transition-all"
+                        aria-label={isFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"}
+                    >
+                        <Heart
+                            className={`h-6 w-6 ${isFavorite ? 'fill-red-500 text-red-500' : 'text-gray-500'}`}
+                        />
+                    </button>
+                )}
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{market.name}</h2>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 //Lucide Icons
 import { Plus, AlertCircle, Store } from "lucide-react";
@@ -6,7 +6,7 @@ import { Plus, AlertCircle, Store } from "lucide-react";
 import { AuthContext } from "../../context/auth.context";
 import marketsService from "../../services/markets.service";
 import townsService from "../../services/towns.service";
-import MarketCard from "./MarketCard";
+import MarketCard from "../../components/MarketCard/MarketCard";
 
 function MarketsListPage() {
   const { id: townId } = useParams();
@@ -16,6 +16,7 @@ function MarketsListPage() {
   const [town, setTown] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [userFavorites, setUserFavorites] = useState([]); // Estado para almacenar los IDs de favoritos
 
   // Usar el contexto de autenticación para obtener el rol del usuario
   const { isLoggedIn, user } = useContext(AuthContext);
@@ -53,6 +54,38 @@ function MarketsListPage() {
 
     fetchMarkets();
   }, [townId, isTownSpecific]);
+
+  // Función para obtener los mercados favoritos del usuario
+  // Envolvemos fetchUserFavorites en useCallback para evitar su recreación en cada renderizado
+  const fetchUserFavorites = useCallback(async () => {
+    if (!isLoggedIn || !user) return;
+
+    try {
+      const response = await marketsService.getFavs(user._id);
+      // Extraemos solo los IDs de los mercados favoritos
+      const favIds = response.data.map(market => market._id);
+      setUserFavorites(favIds);
+    } catch (error) {
+      /* console.error("Error al obtener favoritos:", error); */
+    }
+  }, [isLoggedIn, user]);
+
+  useEffect(() => {
+    // Solo obtenemos los favoritos si el usuario está logueado
+    if (isLoggedIn && user) {
+      fetchUserFavorites();
+    } else {
+      // Si no está logueado, resetear favoritos
+      setUserFavorites([]);
+    }
+  }, [isLoggedIn, user, fetchUserFavorites]);
+
+  // Función para actualizar los datos tras añadir/quitar un favorito
+  const refreshData = () => {
+    if (isLoggedIn && user) {
+      fetchUserFavorites();
+    }
+  };
 
   const handleDelete = async (id) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este mercado?")) {
@@ -93,18 +126,18 @@ function MarketsListPage() {
           <Store className="w-8 h-8 text-primary" />
         </div>
         <h1 className="text-4xl font-bold text-primary mb-4">
-            {isTownSpecific
-              ? `Mercados en ${town?.name}`
-              : "Mercados de Gran Canaria"
-            }
+          {isTownSpecific
+            ? `Mercados en ${town?.name}`
+            : "Mercados de Gran Canaria"
+          }
         </h1>
         <p className="text-lg text-base-content/80 max-w-3xl mx-auto mb-6">
           Descubre los mercados agrícolas y municipales de la isla.
         </p>
-        
+
         {isAdmin && (
           <div className="mt-6">
-            <button 
+            <button
               className="btn btn-primary gap-2"
               onClick={() => navigate("/mercados/crear")}
             >
@@ -117,22 +150,24 @@ function MarketsListPage() {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {markets.map((market) => (
-          <MarketCard 
-          key={market._id} 
-          market={market} 
-          showTown={!isTownSpecific} 
-          isAdmin={isAdmin}
-          navigate={navigate}
-          handleDelete={handleDelete}
+          <MarketCard
+            key={market._id}
+            market={market}
+            showTown={!isTownSpecific}
+            isAdmin={isAdmin}
+            navigate={navigate}
+            handleDelete={handleDelete}
+            refreshFavorites={refreshData}
+            userFavorites={userFavorites}
           />
         ))}
       </div>
-      
+
       {markets.length === 0 && !isLoading && (
         <div className="text-center py-16">
           <p className="text-xl text-base-content/70">No hay mercados disponibles actualmente.</p>
           {isAdmin && (
-            <button 
+            <button
               className="btn btn-primary mt-4 gap-2"
               onClick={() => navigate("/mercados/crear")}
             >
