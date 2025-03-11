@@ -27,7 +27,7 @@ function Footer() {
               <>
                 <span className="footer-title">Cuenta</span>
                 <Link to="/perfil" className="link link-hover">Mi perfil</Link>
-                <Link to="/favorites" className="link link-hover">Favoritos</Link>
+                <Link to="/favoritos" className="link link-hover">Favoritos</Link>
                 <Link to="/settings" className="link link-hover">Configuración</Link>
               </>
             )}
