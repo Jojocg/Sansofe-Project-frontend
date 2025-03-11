@@ -79,9 +79,9 @@ function MarketCard({
         return sortedDays.join(", ");
     };
     return (
-        <div className="card bg-base-100 shadow-xl">
-            <figure className="relative">
-                <img src={market.image} alt={market.name} className="h-48 w-full object-cover" />
+        <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
+            <figure className="relative h-48 overflow-hidden">
+                <img src={market.image} alt={`Imagen de ${market.name}`} className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" />
                 {/* Botón de Favorito - solo mostrar para usuarios logueados */}
                 {isLoggedIn && (
                     <button
