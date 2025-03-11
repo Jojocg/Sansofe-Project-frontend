@@ -9,6 +9,7 @@ import TownsListPage from "./pages/TownsListPage/TownsListPage"
 import MarketsListPage from "./pages/MarketsPage/MarketsListPage";
 import MarketDetailsPage from "./pages/MarketDetailsPage/MarketDetailsPage";
 import BuyLocalPage from "./pages/BuyLocalPage/BuyLocalPage"
+import FavoriteMarketsPage from "./pages/FavoriteMarketsPage/FavoriteMarketsPage";
 
 import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
@@ -63,13 +64,13 @@ function App() {
             <MarketsListPage />
           }
         />
-        <Route 
-          path="/municipios/:id/mercados" 
-          element={<MarketsListPage />} 
+        <Route
+          path="/municipios/:id/mercados"
+          element={<MarketsListPage />}
         />
-        <Route 
-          path="mercados/:id" 
-          element={<MarketDetailsPage />} 
+        <Route
+          path="mercados/:id"
+          element={<MarketDetailsPage />}
         />
         <Route
           path="/mercados/crear"
@@ -87,10 +88,19 @@ function App() {
             </IsPrivate>
           }
         />
-        
-        <Route 
-          path="/local" 
-          element={<BuyLocalPage />} 
+
+        <Route
+          path="/favoritos"
+          element={
+            <IsPrivate>
+              <FavoriteMarketsPage />
+            </IsPrivate>
+          }
+        />
+
+        <Route
+          path="/local"
+          element={<BuyLocalPage />}
         />
 
         <Route

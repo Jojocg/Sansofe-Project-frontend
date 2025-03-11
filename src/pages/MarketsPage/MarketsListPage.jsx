@@ -61,12 +61,16 @@ function MarketsListPage() {
     if (!isLoggedIn || !user) return;
 
     try {
+      setIsLoading(true);
       const response = await marketsService.getFavs(user._id);
       // Extraemos solo los IDs de los mercados favoritos
       const favIds = response.data.map(market => market._id);
       setUserFavorites(favIds);
-    } catch (error) {
-      /* console.error("Error al obtener favoritos:", error); */
+
+      setIsLoading(false);
+    } catch (err) {
+      /* console.error("Error al obtener favoritos:", err); */
+      setIsLoading(false);
     }
   }, [isLoggedIn, user]);
 

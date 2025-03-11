@@ -47,7 +47,7 @@ function MarketCard({
         }
     };
 
-    const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+    /* const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]; */
 
     // Función para formatear los días del horario
     const formatScheduleDays = (days) => {
@@ -57,7 +57,7 @@ function MarketCard({
         if (days.length === 7) return "Todos los días";
 
         // Si son días consecutivos
-        /* const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]; */
+        const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
         const sortedDays = [...days].sort((a, b) => daysOfWeek.indexOf(a) - daysOfWeek.indexOf(b));
 
         // Comprobar si son días consecutivos
