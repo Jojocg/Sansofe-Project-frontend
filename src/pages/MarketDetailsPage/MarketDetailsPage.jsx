@@ -133,7 +133,7 @@ function MarketDetailsPage() {
         {isAdmin && (
           <div className="flex gap-2">
             <button 
-              className="btn btn-outline btn-primary gap-2"
+              className="btn btn-outline btn-warning gap-2"
               onClick={() => navigate(`/mercados/editar/${id}`)}
             >
               <Edit className="w-5 h-5" />

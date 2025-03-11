@@ -118,7 +118,7 @@ function TownsListPage() {
               {isAdmin && (
                 <div className="flex justify-between mt-4 pt-2 border-t border-base-300">
                   <button
-                    className="btn btn-outline btn-info btn-sm gap-1"
+                    className="btn btn-outline btn-warning btn-sm gap-1"
                     onClick={() => navigate(`/municipios/editar/${town._id}`)}
                   >
                     <Edit className="w-4 h-4" />
