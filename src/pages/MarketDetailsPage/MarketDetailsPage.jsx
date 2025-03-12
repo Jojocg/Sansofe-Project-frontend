@@ -231,7 +231,7 @@ function MarketDetailsPage() {
               Calendario Semanal
             </h2>
             
-            <div className="grid grid-cols-7 gap-2">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-7 gap-2">
               {daysOfWeek.map((day) => {
                 // Encontrar todos los horarios que incluyen este día
                 const matchingSchedules = market.schedule.filter(item => 

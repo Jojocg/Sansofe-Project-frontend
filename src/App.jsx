@@ -6,7 +6,7 @@ import ProfilePage from "./pages/ProfilePage/ProfilePage";
 import SignupPage from "./pages/SignupPage/SignupPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import TownsListPage from "./pages/TownsListPage/TownsListPage"
-import MarketsListPage from "./pages/MarketsPage/MarketsListPage";
+import MarketsListPage from "./pages/MarketsListPage/MarketsListPage";
 import MarketDetailsPage from "./pages/MarketDetailsPage/MarketDetailsPage";
 import BuyLocalPage from "./pages/BuyLocalPage/BuyLocalPage"
 import FavoriteMarketsPage from "./pages/FavoriteMarketsPage/FavoriteMarketsPage";
