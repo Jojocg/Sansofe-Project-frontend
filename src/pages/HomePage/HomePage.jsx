@@ -124,7 +124,7 @@ function HomePage() {
                   Uno de los mercados agrícolas más tradicionales y concurridos de la isla.
                 </p>
                 <div className="card-actions justify-end">
-                  <Link to="/markets/san-mateo" className="btn btn-sm btn-primary">Ver detalles</Link>
+                  <Link to="" className="btn btn-sm btn-primary">Ver detalles</Link>
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@ function HomePage() {
                   Ubicado en el Puerto de Las Palmas, ofrece productos frescos del mar y la tierra.
                 </p>
                 <div className="card-actions justify-end">
-                  <Link to="/markets/puerto" className="btn btn-sm btn-primary">Ver detalles</Link>
+                  <Link to="" className="btn btn-sm btn-primary">Ver detalles</Link>
                 </div>
               </div>
             </div>
@@ -166,7 +166,7 @@ function HomePage() {
                   Mercado histórico en el corazón del casco antiguo de Las Palmas.
                 </p>
                 <div className="card-actions justify-end">
-                  <Link to="/markets/vegueta" className="btn btn-sm btn-primary">Ver detalles</Link>
+                  <Link to="" className="btn btn-sm btn-primary">Ver detalles</Link>
                 </div>
               </div>
             </div>
