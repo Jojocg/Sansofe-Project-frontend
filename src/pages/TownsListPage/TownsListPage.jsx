@@ -10,7 +10,7 @@ function TownsListPage() {
   const [towns, setTowns] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
-  
+
   // Usar el contexto de autenticación para obtener el rol del usuario
   const { isLoggedIn, user } = useContext(AuthContext);
   const isAdmin = isLoggedIn && user?.role === 'admin';
@@ -41,8 +41,14 @@ function TownsListPage() {
         // Actualizar la lista de municipios
         setTowns(towns.filter((town) => town._id !== id));
       } catch (err) {
-        /* console.error("Error deleting town:", err); */
-        setError("No se pudo eliminar el municipio. Por favor, inténtalo de nuevo.");
+        // Verificar si el error es de tipo conflicto (409)
+        if (err.response && err.response.status === 409) {
+          // Para usar el mensaje específico que viene del backend
+          setError(err.response.data.message);
+        } else {
+          /* console.error("Error deleting town:", err); */
+          setError("No se pudo eliminar el municipio. Por favor, inténtalo de nuevo.");
+        }
       }
     }
   };
@@ -77,10 +83,10 @@ function TownsListPage() {
           Explora los diferentes municipios de la isla y descubre los mercados locales que cada uno ofrece.
           Haz clic en un municipio para ver sus mercados tradicionales y apoya la economía local.
         </p>
-        
+
         {isAdmin && (
           <div className="mt-6">
-            <button 
+            <button
               className="btn btn-primary gap-2"
               onClick={() => navigate("/municipios/crear")}
             >
@@ -101,20 +107,20 @@ function TownsListPage() {
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
             </figure>
-            
+
             <div className="card-body p-4">
               <h2 className="card-title justify-center text-xl font-semibold">{town.name}</h2>
-              
+
               <div className="mt-4 flex justify-center">
-                <Link 
-                  to={`/municipios/${town._id}/mercados`} 
+                <Link
+                  to={`/municipios/${town._id}/mercados`}
                   className="btn btn-outline btn-primary btn-sm gap-2"
                 >
                   <Store className="w-4 h-4" />
                   Ver Mercados
                 </Link>
               </div>
-              
+
               {isAdmin && (
                 <div className="flex justify-between mt-4 pt-2 border-t border-base-300">
                   <button
@@ -137,12 +143,12 @@ function TownsListPage() {
           </div>
         ))}
       </div>
-      
+
       {towns.length === 0 && !isLoading && (
         <div className="text-center py-16">
           <p className="text-xl text-base-content/70">No hay municipios disponibles actualmente.</p>
           {isAdmin && (
-            <button 
+            <button
               className="btn btn-primary mt-4 gap-2"
               onClick={() => navigate("/municipios/crear")}
             >
