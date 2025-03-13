@@ -1,3 +1,4 @@
+import { MapPin, Home, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function HomePage() {
@@ -12,14 +13,14 @@ function HomePage() {
                 Descubre los <span className="text-primary">mercados locales</span> de Gran Canaria
               </h1>
               <p className="text-lg text-base-content/80 mb-8 max-w-xl">
-                Encuentra productos frescos, apoya a los agricultores canarios y fomenta la economía local. Sansofé te conecta con los mercados más cercanos.
+                Encuentra productos frescos, guarda tus mercados favoritos y recibe actualizaciones. Regístrate para personalizar tu experiencia y apoyar a los agricultores canarios.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/mercados" className="btn btn-primary">
                   Ver mercados
                 </Link>
-                <Link to="/local" className="btn btn-outline">
-                  ¿Por qué consumir local?
+                <Link to="/registro" className="btn btn-outline">
+                  Regístrate
                 </Link>
               </div>
             </div>
@@ -47,14 +48,10 @@ function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {/* Feature 1 */}
             <div className="card bg-base-200 shadow-md">
               <div className="card-body">
                 <div className="mb-4 text-secondary">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
-                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
-                  </svg>
+                  <Home className="h-10 w-10" />
                 </div>
                 <h3 className="card-title">Descubre mercados</h3>
                 <p className="text-base-content/70">
@@ -63,29 +60,22 @@ function HomePage() {
               </div>
             </div>
 
-            {/* Feature 2 */}
             <div className="card bg-base-200 shadow-md">
               <div className="card-body">
                 <div className="mb-4 text-secondary">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/>
-                    <circle cx="12" cy="10" r="3"/>
-                  </svg>
+                  <MapPin className="h-10 w-10" />
                 </div>
-                <h3 className="card-title">Encuentra productores</h3>
+                <h3 className="card-title">Filtra por municipio</h3>
                 <p className="text-base-content/70">
-                  Conoce a los agricultores y artesanos locales que ofrecen sus productos.
+                  Usa el filtro de municipios para encontrar rápidamente los mercados más cercanos a tu ubicación.
                 </p>
               </div>
             </div>
 
-            {/* Feature 3 */}
             <div className="card bg-base-200 shadow-md">
               <div className="card-body">
                 <div className="mb-4 text-secondary">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                  </svg>
+                  <Leaf className="h-10 w-10" />
                 </div>
                 <h3 className="card-title">Consume responsable</h3>
                 <p className="text-base-content/70">
@@ -97,83 +87,79 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Featured Markets */}
+      {/* Seasonal Products */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-base-200">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-base-content mb-4">Mercados destacados</h2>
+            <h2 className="text-3xl font-bold text-base-content mb-4">Productos de temporada</h2>
             <p className="text-lg text-base-content/70 max-w-3xl mx-auto">
-              Algunos de los mercados más populares de Gran Canaria
+              Descubre qué alimentos frescos puedes encontrar este mes en los mercados locales
             </p>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Market Card 1 */}
-            <div className="card bg-base-100 shadow-lg">
-              <figure className="px-4 pt-4">
-                <img
-                  src="https://picsum.photos/id/292/400/300"
-                  alt="Mercado Agrícola de San Mateo"
-                  className="rounded-lg h-48 w-full object-cover"
-                />
-              </figure>
-              <div className="card-body">
-                <h3 className="card-title">Mercado Agrícola de San Mateo</h3>
-                <div className="badge badge-outline mb-2">Sábados y domingos</div>
-                <p className="text-base-content/70 mb-4">
-                  Uno de los mercados agrícolas más tradicionales y concurridos de la isla.
-                </p>
-                <div className="card-actions justify-end">
-                  <Link to="" className="btn btn-sm btn-primary">Ver detalles</Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Market Card 2 */}
+            {/* Seasonal Product 1 */}
             <div className="card bg-base-100 shadow-lg">
               <figure className="px-4 pt-4">
                 <img
                   src="https://picsum.photos/id/1080/400/300"
-                  alt="Mercado del Puerto"
+                  alt="Fresas frescas"
                   className="rounded-lg h-48 w-full object-cover"
                 />
               </figure>
               <div className="card-body">
-                <h3 className="card-title">Mercado del Puerto</h3>
-                <div className="badge badge-outline mb-2">Todos los días</div>
+                <h3 className="card-title">Fresas</h3>
+                <div className="badge badge-outline mb-2">Marzo - Junio</div>
                 <p className="text-base-content/70 mb-4">
-                  Ubicado en el Puerto de Las Palmas, ofrece productos frescos del mar y la tierra.
+                  Las fresas de Gran Canaria son conocidas por su dulzura y aroma. Perfectas para postres o consumir frescas.
                 </p>
                 <div className="card-actions justify-end">
-                  <Link to="" className="btn btn-sm btn-primary">Ver detalles</Link>
+                  <Link to="/mercados" className="btn btn-sm btn-primary">Dónde encontrarlas</Link>
                 </div>
               </div>
             </div>
 
-            {/* Market Card 3 */}
+            {/* Seasonal Product 2 */}
             <div className="card bg-base-100 shadow-lg">
               <figure className="px-4 pt-4">
                 <img
-                  src="https://picsum.photos/id/102/400/300"
-                  alt="Mercado de Vegueta"
+                  src="https://picsum.photos/id/292/400/300"
+                  alt="Espinacas frescas"
                   className="rounded-lg h-48 w-full object-cover"
                 />
               </figure>
               <div className="card-body">
-                <h3 className="card-title">Mercado de Vegueta</h3>
-                <div className="badge badge-outline mb-2">Lunes a sábado</div>
+                <h3 className="card-title">Espinacas</h3>
+                <div className="badge badge-outline mb-2">Octubre - Abril</div>
                 <p className="text-base-content/70 mb-4">
-                  Mercado histórico en el corazón del casco antiguo de Las Palmas.
+                  Ricas en hierro y vitaminas. Las espinacas locales tienen un sabor más intenso y hojas más gruesas.
                 </p>
                 <div className="card-actions justify-end">
-                  <Link to="" className="btn btn-sm btn-primary">Ver detalles</Link>
+                  <Link to="/mercados" className="btn btn-sm btn-primary">Dónde encontrarlas</Link>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="text-center mt-10">
-            <Link to="/mercados" className="btn btn-outline">Ver todos los mercados</Link>
+            {/* Seasonal Product 3 */}
+            <div className="card bg-base-100 shadow-lg">
+              <figure className="px-4 pt-4">
+                <img
+                  src="https://picsum.photos/id/517/400/300"
+                  alt="Naranjas canarias"
+                  className="rounded-lg h-48 w-full object-cover"
+                />
+              </figure>
+              <div className="card-body">
+                <h3 className="card-title">Naranjas</h3>
+                <div className="badge badge-outline mb-2">Diciembre - Mayo</div>
+                <p className="text-base-content/70 mb-4">
+                  Las naranjas canarias destacan por su jugosidad y equilibrio entre dulzura y acidez. Ideales para zumos naturales.
+                </p>
+                <div className="card-actions justify-end">
+                  <Link to="/mercados" className="btn btn-sm btn-primary">Dónde encontrarlas</Link>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
