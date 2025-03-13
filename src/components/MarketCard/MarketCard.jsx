@@ -1,11 +1,11 @@
-//Lucide Icons
 import { Edit, Trash2, Heart } from "lucide-react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, memo } from "react";
 
 import { AuthContext } from "../../context/auth.context";
 import marketsService from "../../services/markets.service";
 
-function MarketCard({
+// Usamos memo para evitar re-renderizados innecesarios
+const MarketCard = memo(function MarketCard({
     market,
     showTown = false,
     isAdmin,
@@ -24,30 +24,40 @@ function MarketCard({
         setIsFavorite(userFavorites.includes(market._id));
     }, [userFavorites, market._id]);
 
-    // Función para cambiar el estado de favorito
+    // Función para cambiar el estado de favorito con actualización optimista
     const handleToggleFavorite = async (e) => {
         e.stopPropagation(); // Prevenir el evento de clic en la tarjeta
         if (!isLoggedIn) return; // No hacer nada si el usuario no está logueado
 
         try {
+            // Actualización optimista - actualizamos la UI inmediatamente
+            const newFavoriteState = !isFavorite;
+            setIsFavorite(newFavoriteState);
+            
+            // Luego enviamos la petición al servidor
             const response = await marketsService.toggleFav({
                 marketId: market._id,
                 userId: user._id
             });
 
-            // Actualizamos el estado local
-            setIsFavorite(response.data.isFavorite);
-
-            // Llamamos a la función de actualización para refrescar la lista de favoritos en el padre
-            if (refreshFavorites) {
-                refreshFavorites();
+            // Para en caso de que la respuesta del servidor no coincide con nuestra actualización optimista,
+            // se revierte el cambio 
+            if (response.data.isFavorite !== newFavoriteState) {
+                setIsFavorite(response.data.isFavorite);
             }
+
+            // Opcional: actualizamos la lista en el padre, pero solo si es absolutamente necesario
+            // Considera eliminar esta llamada para mejorar el rendimiento
+            /* if (refreshFavorites) {
+                // Usa setTimeout para retrasar la actualización global y dar prioridad a la UI
+                setTimeout(() => refreshFavorites(), 300);
+            } */
         } catch (error) {
+            // En caso de error, revertimos a estado anterior
+            setIsFavorite(!isFavorite);
             console.error("Error al cambiar estado de favorito:", error);
         }
     };
-
-    /* const daysOfWeek = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"]; */
 
     // Función para formatear los días del horario
     const formatScheduleDays = (days) => {
@@ -78,6 +88,7 @@ function MarketCard({
         // Si no son consecutivos, listarlos separados por comas
         return sortedDays.join(", ");
     };
+    
     return (
         <div className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300">
             <figure className="relative h-48 overflow-hidden">
@@ -140,6 +151,6 @@ function MarketCard({
             </div>
         </div>
     );
-}
+});
 
 export default MarketCard;

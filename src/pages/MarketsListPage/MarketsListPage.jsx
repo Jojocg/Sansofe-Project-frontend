@@ -23,80 +23,87 @@ function MarketsListPage() {
   const isAdmin = isLoggedIn && user?.role === 'admin';
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Obtener la lista de mercados desde el backend
-    const fetchMarkets = async () => {
-      try {
-        setIsLoading(true);
+  // Memoizamos la función fetchMarkets
+  const fetchMarkets = useCallback(async () => {
+    try {
+      setIsLoading(true);
 
-        if (isTownSpecific) {
-          // Si estamos en la ruta de un municipio específico
-          const [marketsResponse, townResponse] = await Promise.all([
-            marketsService.getByTown(townId),
-            townsService.getOne(townId)
-          ]);
+      if (isTownSpecific) {
+        // Si estamos en la ruta de un municipio específico
+        const [marketsResponse, townResponse] = await Promise.all([
+          marketsService.getByTown(townId),
+          townsService.getOne(townId)
+        ]);
 
-          setMarkets(marketsResponse.data);
-          setTown(townResponse.data);
-        } else {
-          // Si estamos en la ruta general de mercados
-          const response = await marketsService.getAll();
-          setMarkets(response.data);
-        }
-
-        setIsLoading(false);
-      } catch (err) {
-        /* console.error("Error fetching markets:", err); */
-        setError("No se pudieron cargar los mercados. Por favor, inténtalo de nuevo más tarde.");
-        setIsLoading(false);
+        setMarkets(marketsResponse.data);
+        setTown(townResponse.data);
+      } else {
+        // Si estamos en la ruta general de mercados
+        const response = await marketsService.getAll();
+        setMarkets(response.data);
       }
-    };
 
-    fetchMarkets();
+      setIsLoading(false);
+    } catch (err) {
+      /* console.error("Error fetching markets:", err); */
+      setError("No se pudieron cargar los mercados. Por favor, inténtalo de nuevo más tarde.");
+      setIsLoading(false);
+    }
   }, [townId, isTownSpecific]);
 
-  // Función para obtener los mercados favoritos del usuario
-  // Envolvemos fetchUserFavorites en useCallback para evitar su recreación en cada renderizado
+  // Memoizamos la función fetchUserFavorites para evitar su recreación en cada renderizado
   const fetchUserFavorites = useCallback(async () => {
     if (!isLoggedIn || !user) return;
 
     try {
-      setIsLoading(true);
+      // No necesitamos establecer isLoading para esta operación
+      // ya que queremos que sea en segundo plano
       const response = await marketsService.getFavs(user._id);
       // Extraemos solo los IDs de los mercados favoritos
       const favIds = response.data.map(market => market._id);
       setUserFavorites(favIds);
-
-      setIsLoading(false);
     } catch (err) {
       /* console.error("Error al obtener favoritos:", err); */
-      setIsLoading(false);
     }
   }, [isLoggedIn, user]);
 
+  // Efecto para cargar los mercados
   useEffect(() => {
-    // Solo obtenemos los favoritos si el usuario está logueado
+    fetchMarkets();
+  }, [fetchMarkets]);
+
+  // Efecto separado para cargar los favoritos
+  useEffect(() => {
     if (isLoggedIn && user) {
       fetchUserFavorites();
     } else {
-      // Si no está logueado, resetear favoritos
       setUserFavorites([]);
     }
   }, [isLoggedIn, user, fetchUserFavorites]);
 
-  // Función para actualizar los datos tras añadir/quitar un favorito
-  const refreshData = () => {
-    if (isLoggedIn && user) {
-      fetchUserFavorites();
-    }
-  };
+  // Función optimizada para actualizar favoritos - ahora solo actualiza el estado sin recargar todo
+  const updateFavorite = useCallback((marketId, isFavorite) => {
+    setUserFavorites(prevFavorites => {
+      if (isFavorite) {
+        // Si no está ya en favoritos, añadirlo
+        if (!prevFavorites.includes(marketId)) {
+          return [...prevFavorites, marketId];
+        }
+      } else {
+        // Si está en favoritos, quitarlo
+        return prevFavorites.filter(id => id !== marketId);
+      }
+      return prevFavorites;
+    });
+  }, []);
 
+  // Función para eliminar un mercado
   const handleDelete = async (id) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este mercado?")) {
       try {
         await marketsService.deleteOne(id);
         // Actualizar la lista de mercados
-        setMarkets(markets.filter((market) => market._id !== id));
+        setMarkets(prevMarkets => prevMarkets.filter((market) => market._id !== id));
       } catch (err) {
         /* console.error("Error deleting market:", err); */
         setError("No se pudo eliminar el mercado. Por favor, inténtalo de nuevo.");
@@ -104,7 +111,7 @@ function MarketsListPage() {
     }
   };
 
-  if (isLoading) {
+  if (isLoading && markets.length === 0) {
     return (
       <div className="flex justify-center items-center min-h-screen">
         <span className="loading loading-spinner loading-lg text-primary"></span>
@@ -161,7 +168,7 @@ function MarketsListPage() {
             isAdmin={isAdmin}
             navigate={navigate}
             handleDelete={handleDelete}
-            refreshFavorites={refreshData}
+            refreshFavorites={() => updateFavorite(market._id, !userFavorites.includes(market._id))}
             userFavorites={userFavorites}
           />
         ))}
