@@ -1,6 +1,8 @@
 import { MapPin, Home, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import IsAnon from "../../components/IsAnon/IsAnon";
+
 function HomePage() {
   return (
     <div className="min-h-screen bg-base-100">
@@ -19,9 +21,9 @@ function HomePage() {
                 <Link to="/mercados" className="btn btn-primary">
                   Ver mercados
                 </Link>
-                <Link to="/registro" className="btn btn-outline">
+                <IsAnon><Link to="/registro" className="btn btn-outline">
                   Regístrate
-                </Link>
+                </Link></IsAnon>
               </div>
             </div>
             <div className="relative">

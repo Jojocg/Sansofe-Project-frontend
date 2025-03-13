@@ -49,7 +49,7 @@ function SignupPage() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-base-200">
+    <div className="min-h-screen flex flex-col items-center justify-center p-12 bg-base-200">
       <div className="w-full max-w-md p-8 space-y-8 bg-base-100 shadow-lg rounded-lg">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-primary">Únete a Sansofé</h1>
