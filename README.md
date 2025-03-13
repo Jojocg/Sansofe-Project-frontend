@@ -5,7 +5,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Overview
-The Sansofe Project Client is a React-based frontend application designed to provide an intuitive user interface for the Sansofe platform. This client communicates with the Sansofe Project Server to deliver a seamless user experience.
+The Sansofe Project Client is a React-based frontend application designed to provide an intuitive user interface for the Sansofe platform. This client communicates with the [Sansofe Project Server](https://github.com/Jojocg/Sansofe-Mercados-backend) to deliver a seamless user experience.
 
 ## Features
 - Responsive user interface built with React 19
@@ -27,7 +27,7 @@ The Sansofe Project Client is a React-based frontend application designed to pro
 ### Prerequisites
 - Node.js (v18 or later recommended)
 - npm package manager
-- Sansofe Project Server running (for full functionality)
+- [Sansofe Project Server](https://github.com/Jojocg/Sansofe-Mercados-backend) running (for full functionality)
 
 ### Installation
 1. Clone the repository:
@@ -56,6 +56,9 @@ The Sansofe Project Client is a React-based frontend application designed to pro
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
+## Backend Connection
+This frontend application is designed to work with the [SanSoFe Project Server](https://github.com/Jojocg/Sansofe-Mercados-backend). Make sure the backend server is running for full functionality. See the backend repository for installation and setup instructions.
+
 ## Build
 To create a production build:
 ```
@@ -78,4 +81,8 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 The project is deployed and available online. You can access it at the following link:
 
 [Visit the live project](https://sansofe-mercados.netlify.app/)
+
+
+
+
 
