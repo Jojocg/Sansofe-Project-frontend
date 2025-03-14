@@ -120,7 +120,7 @@ function Navbar() {
             <div className="flex items-center gap-3 p-4 mb-4 bg-base-100 rounded-box">
               <div className="avatar">
                 <div className="w-12 rounded-full">
-                  <img src="https://picsum.photos/id/402/200/300" alt="profile" />
+                  <img src="https://picsum.photos/id/674/200/300" alt="profile" />
                 </div>
               </div>
               <div>

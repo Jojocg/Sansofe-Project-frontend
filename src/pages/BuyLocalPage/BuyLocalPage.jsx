@@ -134,7 +134,7 @@ function LocalPage() {
             </div>
             <div>
               <img 
-                src="https://picsum.photos/id/678/600/400" 
+                src="https://picsum.photos/id/699/600/400" 
                 alt="Economía local" 
                 className="rounded-lg shadow-xl w-full h-auto"
               />
