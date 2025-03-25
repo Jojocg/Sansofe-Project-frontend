@@ -2,7 +2,6 @@ import { MapPin, Home, Leaf } from "lucide-react";
 import { Link } from "react-router-dom";
 
 import IsAnon from "../../components/IsAnon/IsAnon";
-import SansofeAssistant from "../../components/Assistant/Assistant";
 
 function HomePage() {
   return (
@@ -180,8 +179,6 @@ function HomePage() {
           </Link>
         </div>
       </section>
-      {/* Chat Assistant */}
-      <SansofeAssistant />
     </div>
   );
 }

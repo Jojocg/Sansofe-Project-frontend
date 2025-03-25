@@ -53,7 +53,7 @@ const SansofeAssistant = ({ marketId, townId }) => {
                 text: response.data.response
             }]);
         } catch (error) {
-            console.error('Error al obtener respuesta:', error);
+            /* console.error('Error al obtener respuesta:', error); */
             setMessages(prev => [...prev, {
                 type: 'assistant',
                 text: 'Lo siento, ha ocurrido un error al procesar tu consulta. Por favor, inténtalo de nuevo.'
@@ -126,7 +126,7 @@ const SansofeAssistant = ({ marketId, townId }) => {
                                 <button
                                     key={index}
                                     onClick={() => handleSuggestionClick(suggestion)}
-                                    className="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1 text-sm hover:bg-green-50 text-xs md:text-sm"
+                                    className="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1 hover:bg-green-50 text-xs md:text-sm"
                                 >
                                     <span className="mr-1">{suggestion.icon}</span> 
                                     <span className="truncate max-w-32 md:max-w-full">{suggestion.text}</span>

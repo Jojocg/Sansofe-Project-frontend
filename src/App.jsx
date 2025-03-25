@@ -17,11 +17,14 @@ import IsPrivate from "./components/IsPrivate/IsPrivate";
 import IsAnon from "./components/IsAnon/IsAnon";
 import TownForm from "./components/TownForm/TownForm";
 import MarketForm from "./components/MarketForm/MarketForm";
+import SansofeAssistant from "./components/Assistant/Assistant";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
+      {/* Chat Assistant */}
+      <SansofeAssistant />
 
       <Routes>
         <Route path="/" element={<HomePage />} />
