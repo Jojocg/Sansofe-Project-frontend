@@ -1,5 +1,6 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import HomePage from "./pages/HomePage/HomePage";
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
@@ -20,11 +21,12 @@ import MarketForm from "./components/MarketForm/MarketForm";
 import SansofeAssistant from "./components/Assistant/Assistant";
 
 function App() {
+  const location = useLocation();
   return (
     <div className="App">
       <Navbar />
-      {/* Chat Assistant */}
-      <SansofeAssistant />
+      {/* Al Chat Assistant se le pasa la ubicación actual como prop*/}
+      <SansofeAssistant location={location}/>
 
       <Routes>
         <Route path="/" element={<HomePage />} />

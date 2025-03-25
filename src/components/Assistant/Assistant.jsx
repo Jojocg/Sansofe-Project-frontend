@@ -2,9 +2,17 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { X, MessageSquare, Leaf, MessageCircleQuestion, MapPin, Clock, ShoppingBasket } from 'lucide-react';
 
-const SansofeAssistant = ({ marketId, townId }) => {
+const SansofeAssistant = ({ location }) => {
     const baseURL = process.env.REACT_APP_SERVER_URL;
     const [isOpen, setIsOpen] = useState(false);
+
+    // Extraer IDs de la ruta actual (La expresión regular captura los IDs de las URLs dinámicas)
+    const marketIdMatch = location.pathname.match(/\/mercados\/([^/]+)$/);
+    const townIdMatch = location.pathname.match(/\/municipios\/([^/]+)\/mercados/);
+
+    // La ID correspondiente de la URL se pasa en el payload de la solicitus POST al servidor
+    const marketId = marketIdMatch ? marketIdMatch[1] : null;
+    const townId = townIdMatch ? townIdMatch[1] : null;
 
     const [messages, setMessages] = useState([
         {
@@ -128,7 +136,7 @@ const SansofeAssistant = ({ marketId, townId }) => {
                                     onClick={() => handleSuggestionClick(suggestion)}
                                     className="flex items-center bg-white border border-gray-300 rounded-full px-3 py-1 hover:bg-green-50 text-xs md:text-sm"
                                 >
-                                    <span className="mr-1">{suggestion.icon}</span> 
+                                    <span className="mr-1">{suggestion.icon}</span>
                                     <span className="truncate max-w-32 md:max-w-full">{suggestion.text}</span>
                                 </button>
                             ))}
