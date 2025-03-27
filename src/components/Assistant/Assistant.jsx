@@ -155,7 +155,7 @@ const SansofeAssistant = ({ location }) => {
                             />
                             <button
                                 type="submit"
-                                className="bg-green-600 text-white px-4 py-2 rounded-r-lg hover:bg-green-700 disabled:bg-green-300"
+                                className="bg-green-600 text-white px-4 py-2 rounded-r-lg hover:bg-green-700 disabled:bg-green-800 disabled:opacity-25 disabled:cursor-not-allowed"
                                 disabled={loading}
                             >
                                 Enviar
