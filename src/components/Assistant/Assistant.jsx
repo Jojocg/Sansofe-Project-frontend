@@ -61,10 +61,30 @@ const SansofeAssistant = ({ location }) => {
                 text: response.data.response
             }]);
         } catch (error) {
-            /* console.error('Error al obtener respuesta:', error); */
+            const errorData = error.response?.data;
+            let errorMessage = 'Lo siento, ha ocurrido un error al procesar tu consulta.';
+
+            if (errorData?.error) {
+                switch (errorData.type) {
+                    case 'RateLimitError':
+                        errorMessage = `${errorData.message}. Podrás realizar más consultas en ${errorData.retryAfter} minutos.`;
+                        break;
+                    case 'ValidationError':
+                        errorMessage = errorData.message;
+                        break;
+                    case 'AIServiceError':
+                        errorMessage = 'El servicio de IA no está disponible en este momento. Por favor, inténtalo más tarde.';
+                        break;
+                    default:
+                        errorMessage = 'Ha ocurrido un error inesperado. Por favor, inténtalo de nuevo.';
+                }
+            }
+
+            // Añadir mensaje de error como respuesta del asistente
             setMessages(prev => [...prev, {
                 type: 'assistant',
-                text: 'Lo siento, ha ocurrido un error al procesar tu consulta. Por favor, inténtalo de nuevo.'
+                text: errorMessage,
+                /* isError: true */ // Nuevo campo para poder estilizar los mensajes de error diferente
             }]);
         } finally {
             setLoading(false);
