@@ -59,6 +59,65 @@ You may also see any lint errors in the console.
 ## Backend Connection
 This frontend application is designed to work with the [SanSoFe Project Server](https://github.com/Jojocg/Sansofe-Mercados-backend). Make sure the backend server is running for full functionality. See the backend repository for installation and setup instructions.
 
+## AI Integration
+
+### Overview
+The Sansofé Project features an intelligent assistant that enhances user experience through context-aware interactions. The assistant is designed to provide real-time information about local markets in Gran Canaria.
+
+### Key Features
+
+#### 🤖 Context-Aware Responses
+The assistant automatically detects the user's current context:
+- Market-specific information when viewing a particular market
+- Municipality-focused details when browsing markets in a specific town
+- General information about all markets in other contexts
+
+#### 💡 Smart Suggestions
+Pre-defined quick suggestions help users discover:
+- Family-friendly markets
+- Gastronomic offerings
+- Weekend opening hours
+- Location-based recommendations
+
+#### 🔄 Interactive Chat Interface
+```javascript
+// Example of how the assistant processes context
+{
+  "query": "What are the opening hours?",
+  "marketId": "market123",      // Automatically detected from URL
+  "townId": "town456"          
+}
+```
+
+### Technical Implementation
+
+The AI assistant is implemented through:
+- Real-time communication with a specialized AI endpoint
+- Context extraction from URL patterns
+- Error handling with user-friendly messages
+- Rate limiting protection
+- Responsive chat interface
+
+<details>
+<summary>Integration Example</summary>
+
+```jsx
+const handleSubmit = async () => {
+  const response = await axios.post(`${baseURL}/api/ai/assistant`, {
+    query: userInput,
+    marketId,    // Context from current market
+    townId       // Context from current town
+  });
+};
+```
+</details>
+
+### Benefits
+- 📱 **Instant Access**: Fixed position chat button for easy access
+- 🎯 **Contextual Relevance**: Tailored responses based on user's location in the app
+- 🔍 **Enhanced Discovery**: Helps users find specific market features and services
+- 💬 **Natural Interaction**: Conversational interface for intuitive user experience
+
 ## Build
 To create a production build:
 ```
